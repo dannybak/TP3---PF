@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/whatsAppFragment"
+        android:icon="@drawable/whatsapp_no_bg"
+        android:title="Whatsapp" />
+
+    <item
+        android:id="@+id/googleMapsFragment"
+        android:icon="@drawable/google_maps_pointer"
+        android:title="Google Maps" />
+    <!--
+    <item
+        android:id="@+id/account"
+        android:icon="@drawable/account"
+        android:title="Mi Cuenta" />
+    -->
+</menu>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navgraph"
+    app:startDestination="@id/whatsAppFragment">
+
+    <fragment
+        android:id="@+id/whatsAppFragment"
+        android:name="com.example.integracionwhatsapp.fragments.WhatsAppFragment"
+        android:label="fragment_whats_app"
+        tools:layout="@layout/fragment_whats_app" />
+    <fragment
+        android:id="@+id/googleMapsFragment"
+        android:name="com.example.integracionwhatsapp.fragments.GoogleMapsFragment"
+        android:label="fragment_google_maps"
+        tools:layout="@layout/fragment_google_maps" />
+</navigation>

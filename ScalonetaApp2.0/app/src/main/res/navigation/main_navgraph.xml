@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navgraph"
+    app:startDestination="@id/scalonetaList">
+
+    <fragment
+        android:id="@+id/scalonetaList"
+        android:name="com.example.scalonetaapp.fragments.scalonetaList"
+        android:label="fragment_scaloneta_list"
+        tools:layout="@layout/fragment_scaloneta_list" >
+        <action
+            android:id="@+id/action_scalonetaList_to_playerDetails"
+            app:destination="@id/playerDetails" />
+        <action
+            android:id="@+id/action_scalonetaList_to_addPlayer2"
+            app:destination="@id/addPlayer" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerDetails"
+        android:name="com.example.scalonetaapp.fragments.PlayerDetails"
+        android:label="fragment_player_details"
+        tools:layout="@layout/fragment_player_details" >
+        <argument android:name="playerIndex"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/account"
+        android:name="com.example.scalonetaapp.fragments.account"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/busquedaJugador"
+        android:name="com.example.scalonetaapp.fragments.BusquedaJugador"
+        android:label="fragment_busqueda_jugador"
+        tools:layout="@layout/fragment_busqueda_jugador" />
+    <fragment
+        android:id="@+id/addPlayer"
+        android:name="com.example.scalonetaapp.fragments.addPlayer"
+        android:label="fragment_add_player"
+        tools:layout="@layout/fragment_add_player" />
+</navigation>
