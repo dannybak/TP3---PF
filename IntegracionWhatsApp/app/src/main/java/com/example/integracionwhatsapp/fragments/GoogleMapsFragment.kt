@@ -1,6 +1,5 @@
 package com.example.integracionwhatsapp.fragments
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,8 +10,6 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import com.bumptech.glide.Glide
 import com.example.integracionwhatsapp.R
 import com.example.integracionwhatsapp.viewModels.GoogleMapsViewModel
 
@@ -21,9 +18,12 @@ class GoogleMapsFragment : Fragment() {
     lateinit var v : View
     private val viewModel: GoogleMapsViewModel by viewModels()
 
-    lateinit var directionEditText : EditText
+    lateinit var directionAEditText : EditText
+    lateinit var directionBEditText : EditText
     lateinit var searchButton : Button
-    lateinit var currentDirection : TextView
+    lateinit var googleMapsAppButton : Button
+    lateinit var kmindicator : TextView
+    lateinit var remindTextView : TextView
 
     /*
     companion object {
@@ -37,12 +37,15 @@ class GoogleMapsFragment : Fragment() {
     ): View? {
         v = inflater.inflate(R.layout.fragment_google_maps, container, false)
 
-        directionEditText = v.findViewById(R.id.directionEditText)
+        directionAEditText = v.findViewById(R.id.directionAEditText)
+        directionBEditText = v.findViewById(R.id.directionBEditText)
         searchButton = v.findViewById(R.id.searchButton)
-        currentDirection = v.findViewById(R.id.currentDirection)
+        kmindicator = v.findViewById(R.id.kmindicator)
+        remindTextView = v.findViewById(R.id.remindTextView)
+        googleMapsAppButton = v.findViewById(R.id.googleMapsAppButton)
 
         viewModel.setView(v)
-        viewModel.createGoogleMaps(this, "")
+        viewModel.createGoogleMaps(this, "Yatay 240", "Rio de Janeiro 471")
 
         return v
     }
@@ -56,13 +59,22 @@ class GoogleMapsFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        remindTextView.text = "Recordar que la distancia es aproximada. Para ver los mejores caminos o medios de transporte, haz click en el siguiente boton:"
 
-        viewModel.direction.observe(viewLifecycleOwner, Observer { result ->
-            currentDirection.text = result.toString()
+        viewModel.kmindicator.observe(viewLifecycleOwner, Observer { result ->
+            kmindicator.text = result.toString()
+        })
+        viewModel.dirA.observe(viewLifecycleOwner, Observer { result ->
+        })
+        viewModel.dirB.observe(viewLifecycleOwner, Observer { result ->
         })
 
         searchButton.setOnClickListener{
-            viewModel.createGoogleMaps(this, directionEditText.text.toString())
+            viewModel.createGoogleMaps(this, directionAEditText.text.toString(), directionBEditText.text.toString())
+        }
+
+        googleMapsAppButton.setOnClickListener{
+            viewModel.redirectToGoogleMaps(directionAEditText.text.toString(), directionBEditText.text.toString())
         }
     }
 
